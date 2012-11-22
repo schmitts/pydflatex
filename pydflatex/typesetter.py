@@ -319,6 +319,8 @@ class Typesetter(object):
 			os.system('/usr/bin/open "{0}"'.format(self.current_pdf_name))
 
 	def make_invisible(self, base, aux_file):
+                if os.uname()[0] != 'Darwin':
+                        return
 		cmd = ['/Developer/Tools/SetFile','-a','V']
 		full_path = os.path.join(base,aux_file)
 		try:
